@@ -6,7 +6,11 @@ from copy import deepcopy as copy
 from neuro import NeuralNetwork
 import datetime
 import matplotlib.pyplot as plt
+import os
 
+folder_path = "dumps"
+if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
 
 class Vector:
     def __init__(self, x, y):
@@ -262,7 +266,7 @@ if __name__ == "__main__":
         sorted_times = sorted(generation_times)[-4:]
         lucky = [generation_times.index(el) for el in sorted_times]
 
-        if max(generation_times) >= 15000:
+        if max(generation_times) >= 5000:
             for el in lucky:
                 generation[el].save(f'dumps/{gen_count}-{el}-{generation_times[el]}.nn')
 
